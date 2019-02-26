@@ -3,6 +3,9 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
@@ -27,8 +30,7 @@ def password(self, password):
 def verify_password(self,password):
         return check_password_hash(self.pass_secure, password)
 
-class Pitch(db.Model):from flask_login import login_required
-    
+class Pitch(db.Model):
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
@@ -49,9 +51,6 @@ class Comment(db.Model):
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
-@login_manager.user_loader
-    def load_user(user_id):
-    return User.query.get(int(user_id))
 
 def __repr__(self):
         return f'User {self.username}'
