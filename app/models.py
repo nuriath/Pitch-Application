@@ -16,8 +16,8 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
-    pitches = db.relationship('Pitch',backref = 'users',lazy="dynamic")
-    comments = db.relationship('Comment',backref = 'users',lazy="dynamic")
+    pitches = db.relationship('Pitch',backref = 'user',lazy="dynamic")
+    comments = db.relationship('Comment',backref = 'user',lazy="dynamic")
     
 @property
 def password(self):
@@ -35,11 +35,10 @@ class Pitch(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     description = db.Column(db.String(255))
-    # category = 
-    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    category = db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
-    # upvote =
-    # downvote =
+    
 
 
 class Comment(db.Model):
@@ -47,10 +46,11 @@ class Comment(db.Model):
     __tablename__='comments'
 
     id = db.Column(db.Integer,primary_key = True)
-    description = db.Column(db.String(255))
+    comment = db.Column(db.String(255))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-
+    votes = db.Column(db.Integer)
+    
 
 def __repr__(self):
         return f'User {self.username}'

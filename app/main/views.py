@@ -5,7 +5,7 @@ from flask_login import login_required
 from .forms import ReviewForm,UpdateProfile
 from .. import db,photos
 
-Views
+# Views
 @main.route('/')
 def index():
     '''
