@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+    {% block content %}
+     
+    <div class="container">
+            <div class="col-md-4 form" >
+                <br>
+                  {{ wtf.quick_form(new_pitch) }}
+         
+                <hr>
+            </div>
+    </div>
+    {% endblock %}
+

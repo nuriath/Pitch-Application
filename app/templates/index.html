@@ -24,7 +24,7 @@
        <div class="container">
             <!-- Content block -->
             {% block content %}
-            <h2>Different Categories of Pitch</h2>
+            <!-- <h2>Different Categories of Pitch</h2>
             <h3>Music Pitch</h3>
             <p> music, position of a single sound in the complete range of sound.
                 Sounds are higher or lower in pitch according to the frequency of
@@ -33,7 +33,28 @@
             <p>As in previous years, this year I wrote how I evaluated the results
                of the last year, how I planned at the 2019 year and what goals I set.</p>
                {% macro displayPitchList(pitch) %}
-               {% endmacro%}
+               {% endmacro%} -->
+
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"> 
+                <a href="{{url_for('main.incubators')}}" style="font-family: 'Lora', cursive; font-size:20px;">
+                    <br>
+                    Incubators Pitches
+                </a>
+                <br>
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"> 
+                <a href="{{url_for('main.business')}}" style="font-family: 'Lora', cursive; font-size:20px;">
+                    <br>
+                    Business Pitches
+                </a>
+                <br>
+                    
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"> 
+                <a href="{{url_for('main.education')}}" style="font-family: 'Lora', cursive; font-size:20px;">
+                    <br>
+                    Education Pitches
+                </a>
+                <br>
+
             {% endblock%}
             
             

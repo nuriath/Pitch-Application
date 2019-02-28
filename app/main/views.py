@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import  User, Pitch, Comment
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .forms import PitchForm,UpdateProfile
 from .. import db,photos
 
@@ -19,7 +19,7 @@ def index():
 @main.route('/incubators/')
 def incubators():
     
-    Pitch= pitch.Pitch
+    pitches= Pitch.get_pitches()
     title = 'Home - Welcome to The best Pitching Website Online'  
     return render_template('index.html', title = title, pitches= pitches )
 
@@ -28,7 +28,7 @@ def business():
     
     title = 'Business Pitches'
 
-    pitches= Pitch.pitch
+    pitches= Pitch.get_pitches()
 
     return render_template('index.html', title = title, pitches= pitches )
 
@@ -37,11 +37,9 @@ def education():
     
     title = 'Edication Pitches'
 
-    Pitch= pitch.Pitch
+    pitches= Pitch.get_pitches()
 
     return render_template('index.html', title = title, pitches= pitches )
-
-
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -51,7 +49,6 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user)
-
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
@@ -81,7 +78,7 @@ def update_pic(uname):
        path = f'photos/{filename}'
        user.profile_pic_path = path
        db.session.commit()
-   return redirect(url_for('main.profile',uname=uname))
+   return redirect(url_for('main.update_profile',uname=uname))
 
 @main.route('/new', methods=['GET', 'POST'])
 @login_required
@@ -106,17 +103,3 @@ def new_pitch():
 
     return render_template('new_pitch.html',form=pitch_form)
 
-# @main.route('/music/pitch')
-# def music(pitch):
-    
-#     return render_template('index.html')
-
-# @main.route('/edication/')
-# def edication():
-    
-#     return render_template('index.html')
-
-# @main.route('/business/')
-# def business():
-    
-#     return render_template('index.html')
