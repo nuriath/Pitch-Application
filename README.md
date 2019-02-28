@@ -2,7 +2,7 @@
 
 ## Author
 
- MWANGAZA Nuriath
+ Mwangaza Nuriath
 
 ## Description
 
@@ -17,3 +17,8 @@ This application is about Pitches, to see the previous pitches you need first to
 ## Contact
 
 -E-mail: mnuriath28@gmail.com
+
+## Contrubutor
+
+Mwangaza Nuriath
+
