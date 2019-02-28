@@ -25,3 +25,7 @@ Mwangaza Nuriath
 ## Relation Link
 
 -https://github.com/nuriath/Pitch-Application
+
+## Liceense & copy 
+
+-(c) Mwangaza Nuriath, MIT License 2019.
