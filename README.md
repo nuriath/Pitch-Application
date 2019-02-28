@@ -26,6 +26,6 @@ Mwangaza Nuriath
 
 -https://github.com/nuriath/Pitch-Application
 
-## Liceense & copy 
+## License & copy 
 
 -(c) Mwangaza Nuriath, MIT License 2019.
