@@ -39,6 +39,16 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
     
+    @classmethod
+    def get_pitches_by_category(cls,cat_id):
+       
+        return Pitch.query.filter_by(category_id= cat_id)
+
+    @classmethod
+    def get_categories(cls):
+        
+        categories = PitchCategory.query.all()
+        return categories
 
 
 class Comment(db.Model):
@@ -51,6 +61,13 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     votes = db.Column(db.Integer)
     
+    @classmethod
+    def get_comments(cls,id):
+        comments = Comment.query.filter_by(pitch_id=id).all()
+
+        return comments
 
 def __repr__(self):
         return f'User {self.username}'
+
+

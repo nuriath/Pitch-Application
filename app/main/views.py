@@ -16,6 +16,33 @@ def index():
 
     return render_template('index.html', title = title)
 
+@main.route('/incubators/')
+def incubators():
+    
+    Pitch= pitch.Pitch
+    title = 'Home - Welcome to The best Pitching Website Online'  
+    return render_template('index.html', title = title, pitches= pitches )
+
+@main.route('/business/')
+def business():
+    
+    title = 'Business Pitches'
+
+    pitches= Pitch.pitch
+
+    return render_template('index.html', title = title, pitches= pitches )
+
+@main.route('/education/')
+def education():
+    
+    title = 'Edication Pitches'
+
+    Pitch= pitch.Pitch
+
+    return render_template('index.html', title = title, pitches= pitches )
+
+
+
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
@@ -56,8 +83,8 @@ def update_pic(uname):
        db.session.commit()
    return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/new', methods=['GET','POST'])
-@login_requered
+@main.route('/new', methods=['GET', 'POST'])
+@login_required
 
 def new_pitch():
     form = PitchForm()
@@ -65,8 +92,19 @@ def new_pitch():
 
         pitch = form.pitch.data
         title = form.title.data
-        category =  form.category.data
+        category = form.category.data
+    
+        new_pitch = Pitch(pitch=pitch, title=title, category=category, user_id=current_user.id)
 
+       
+        new_pitch.save_pitch()
+        return redirect(url_for('main.new_pitch'))
+
+
+        db.session.add(new_pitch)
+        db.session.commit()
+
+    return render_template('new_pitch.html',form=pitch_form)
 
 # @main.route('/music/pitch')
 # def music(pitch):

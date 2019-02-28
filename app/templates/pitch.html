@@ -1,21 +1,15 @@
-{% extends 'base.html'%}
-{% block content %}
-<div class="container">
+<div class="row">
 
-    <!-- Poster background -->
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="background: url({{movie.poster}}) no-repeat center center">
-        </div>
+    <h1>Pitch</h1>
+    <hr>
 
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
-            <h3>{{ music.pitch }}</h3>
+    {% if reviews %}
+        {{macro.displayPitch(pitch)}}
 
-           
-        </div>
-    </div>
+    {% else%}
+        <h3 class="text-center">Pitch here </h3>
+
+        <a class="btn btn-success btn-lg text-center" href="/user/pitch/new/{{pitch.id}}"> Write a new pitch</a>
+    {% endif %}
 
 </div>
-{% endblock %}
-
-
-
