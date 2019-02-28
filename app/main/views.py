@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import  User, Pitch, Comment
 from flask_login import login_required
-from .forms import ReviewForm,UpdateProfile
+from .forms import PitchForm,UpdateProfile
 from .. import db,photos
 
 # Views
@@ -39,9 +39,9 @@ def update_profile(uname):
         user.bio = form.bio.data
 
         db.session.add(user)
-        db.session.commit()
+        db.session.Updatecommit()
 
-        return redirect(url_for('.profile',uname=user.username))
+    return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
 
@@ -55,6 +55,18 @@ def update_pic(uname):
        user.profile_pic_path = path
        db.session.commit()
    return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/new', methods=['GET','POST'])
+@login_requered
+
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+
+        pitch = form.pitch.data
+        title = form.title.data
+        category =  form.category.data
+
 
 # @main.route('/music/pitch')
 # def music(pitch):
