@@ -9,9 +9,14 @@ class UpdateProfile(FlaskForm):
 
 class PitchForm(FlaskForm):
    description = TextAreaField('Write down here your pitch',validators=[Required()])
-   category = StringField('category',validators=[Required()])
+   category = SelectField('category',validators=[Required()])
    submit = SubmitField('Submit')
 
 class Comment(FlaskForm):
    comment = TextAreaField('Leave you comment here.',validators = [Required()])
    submit = SubmitField('Submit')
+
+class FormVotes(FlaskForm):
+   submit = SubmitField('vote')
+
+
