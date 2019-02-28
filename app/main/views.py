@@ -12,11 +12,8 @@ def index():
     View root page function that returns the index page and its data
     '''
 
-   
-
     title = 'Home - Welcome to The Pitch Application'
 
-   
     return render_template('index.html', title = title)
 
 @main.route('/user/<uname>')
@@ -58,3 +55,18 @@ def update_pic(uname):
        user.profile_pic_path = path
        db.session.commit()
    return redirect(url_for('main.profile',uname=uname))
+
+# @main.route('/music/')
+# def music():
+    
+#     return render_template('index.html')
+
+# @main.route('/edication/')
+# def edication():
+    
+#     return render_template('index.html')
+
+# @main.route('/business/')
+# def business():
+    
+#     return render_template('index.html')

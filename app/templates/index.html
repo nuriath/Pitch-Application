@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,7 @@
       
     </head>
     <body>
+        
        <!-- Styles block -->
 
         {% block styles%}
@@ -19,13 +21,20 @@
         {{ super() }}
         <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
         {% endblock %}
+       <div class="container">
+            <!-- Content block -->
+            {% block content %}
+            <h2>Different Categories of Pitch</h2>
+            <h3>Music Pitch</h3>
+            <p> music, position of a single sound in the complete range of sound.
+                Sounds are higher or lower in pitch according to the frequency of
+                vibration of the sound waves producing them.</p>  
+            <h3>Education</h3> 
+            <p>As in previous years, this year I wrote how I evaluated the results
+               of the last year, how I planned at the 2019 year and what goals I set.</p>
 
-        <!-- Content block -->
-        {% block content %}
-        <h1>PITCHES</h1>
-
-        {% endblock%}
-        
+            {% endblock%}
+       </div>
     </body>
 
 </html>
