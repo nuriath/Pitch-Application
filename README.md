@@ -22,3 +22,6 @@ This application is about Pitches, to see the previous pitches you need first to
 
 Mwangaza Nuriath
 
+## Relation Link
+
+-https://github.com/nuriath/Pitch-Application
