@@ -13,3 +13,7 @@ This application is about Pitches, to see the previous pitches you need first to
 -Google Chrome
 -Visual Code Studio
 -Terminal
+
+## Contact
+
+-E-mail: mnuriath28@gmail.com
