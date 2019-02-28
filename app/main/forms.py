@@ -13,9 +13,8 @@ class UpdateProfile(FlaskForm):
    bio = TextAreaField('Tell us about you.',validators = [Required()])
    submit = SubmitField('Submit')
 
-class PitchForm(FlaskForm):
-   description = StringField('Review title',validators=[Required()])
-   category = StringField('Category title',validators=[Required()])
-   # user_id = db.Column(db.Integer,db.ForeignKey('users.
+class UpdatePitch(FlaskForm):
+   description = TextAreaField('Write down here your pitch',validators=[Required()])
+   category = StringField('category',validators=[Required()])
    submit = SubmitField('Submit')
 
